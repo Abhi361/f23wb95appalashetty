@@ -1,22 +1,21 @@
 extends layout
+
 block content
   h1= title
-  br
-  p Query Parameters:
-  p Rows: #{query.rows}
-  p Columns: #{query.cols}
+  p Number of rows #{query.rows}
+  p Number of columns #{query.cols}
 
-  - let rows = Number(query.rows)
-  - let cols = Number(query.cols)
+  - let rows=Number(query.rows)
+  - let cols=Number(query.cols)
 
-  - if (!Number.isInteger(rows) || !Number.isInteger(cols))
-    p Invalid input. Rows and columns must be integers.
-
-  - else if (rows < 1 || rows > 10 || cols < 1 || cols > 10)
-    p Rows and columns should be between 1 and 10.
-
-  - else
-    table#outer
+  if !(Number.isInteger(rows)) && !(Number.isInteger(cols))
+    p incorrect rows or columns
+  else if (rows<1) && (rows>10)
+    p rows are out of range
+  else if (cols<1) && (cols>10)
+    p cols are out of range
+  else
+   table#outer
      - for(let i=0; i<rows; i++){
         tr#middle
          - for(let j=0; j<cols; j++){
@@ -28,5 +27,5 @@ block content
                 td #{i}
             else 
                 td 0
-         -}
-     -}
+         -}
+     -}
