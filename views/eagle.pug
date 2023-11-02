@@ -2,24 +2,24 @@ extends layout
 
 block content
   h1= title
-  br
-  p Welcome to Search Results Page
-  - let result = [
-    { name: "Apple iPhone", price: 999.99, description: "The Apple iPhone is known for its sleek design." },
-    { name: "Samsung Galaxy", price: 799.99, description: "The Samsung Galaxy is a feature-rich smartphone." },
-    { name: "Dell Laptop", price: 1199.99, description: "The Dell Laptop is high-performance." }
-  ]
-  div.container-fluid
+  p Welcome to Eagle Class
+  - let result = [{ name: "Thunder", age: 12, description: "Majestic Bald Eagle with keen hunting skills."},{ name: "Aurora", age: 8, description: "Golden Eagle, a fearless mountain hunter."},{ name: "Skyler", age: 3, description: "Young and curious Harpy Eagle exploring the rainforest."}]   
+   div.container-fluid 
     div.row
-      each eagle, index in result
-        div.col-sm-2(onclick=`buy(${index})`)
-          p= eagle.name
-          p= eagle.price
-          p= eagle.description
-        br
-        hr
+     each eagle,index in result
+      div.col-sm-2(onclick=`buy(${index})`) #{eagle.name}
+      div.col-sm-2(onclick=`buy(${index})`) #{eagle.age}
+      div.col-sm-2(onclick=`buy(${index})`) #{eagle.description}
+      br
+      hr
 
-  script.
-    function buy(index) {
-      alert('You purchased Item: ' + (index + 1));
-    }
+  script. 
+       function buy(index)
+       {
+        alert(`you purchased Item: ${index+1}`)
+       }
+
+
+    
+
+  
